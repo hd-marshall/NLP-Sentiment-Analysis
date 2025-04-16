@@ -1,7 +1,5 @@
 # NLP-Sentiment-Analysis
 
-# NLP Sentiment Analysis of r/stocks Subreddit
-
 ## Introduction
 
 The public's opinion towards companies can be strong, especially for those with financial ties to a company. Their investment can decide whether a company succeeds or heads for a complete crash, therefore gathering an overall sentiment and using this to analyse if such sentiment is reflected in the financial market, was a beneficial investigation.
