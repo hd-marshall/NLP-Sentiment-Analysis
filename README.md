@@ -68,20 +68,6 @@ Analysing the most common words found in these combined submissions and comments
 - Tesla
 - Day
 
-### Figure 2. Frequency of most common terms
-
-_[Image placeholder for frequency graph]_
-
-### Figure 3. Distribution of term frequencies
-
-_[Image placeholder for term distribution graph]_
-
-## Unigrams and Bigrams
-
-### Figure 4. Most common single words and two words together
-
-_[Image placeholder for unigrams and bigrams graph]_
-
 ## Preprocessing
 
 After completing the initial exploration and storing of the data, it was necessary to complete preprocessing before using models for large amounts of text fields. With the collection of these, there are only 3 types of fields that are natural language, those being submission_title, submission_text and comment_text (Figure 1).
@@ -109,7 +95,7 @@ After completing this, the original word count was 901,391 which has been cut by
 
 I created a new data structure for all the new data that is generated from the computation of this research, creating a way to understand and represent the data.
 
-### Figure 4. Submission sentiment and topics data structure
+### Figure 2. Submission sentiment and topics data structure
 
 ```json
 {
@@ -197,49 +183,39 @@ The higher value calculation for any individual term is than understood to have 
 
 The graph shows terms identified through TF-IDF analysis, tallying the counts of the most popular terms as topics, which differs significantly from merely counting the most common keywords. While common keyword frequency (k-word) analysis simply tallies raw word occurrences, TF-IDF applies a weighting system.
 
-### Figure 5. Most common topics
+### Figure 3. Most common topics
 
-_[Image placeholder for common topics graph]_
+![Description](imgs/top_topics.png)
 
-### Figure 6. Top topics sentiment distribution
+### Figure 4. Top topics sentiment distribution
 
-_[Image placeholder for topics sentiment distribution graph]_
+![Description](imgs/topic_sentiments.png)
 
-### Figure 7. Topic word cloud
+### Figure 5. Topic word cloud
 
-_[Image placeholder for topic word cloud]_
+![Description](imgs/topic_frequency_wordcloud.png)
 
-In Figure 7, the largest words are the most common topics to be found throughout the dataset and the redder the term is, the overall sentiment is worse, and the opposite applies to green terms. Trump and tariff are the most common topics with an overall negative sentiment.
+In Figure 5, the largest words are the most common topics to be found throughout the dataset and the redder the term is, the overall sentiment is worse, and the opposite applies to green terms. Trump and tariff are the most common topics with an overall negative sentiment.
 
 ### Computing Topic Analysis for Submissions with LDA
 
 I then generated the topics by using Latent Dirichlet Allocation (LDA) algorithm, it will find statistically significant word clusters of that frequently reoccur. Each document in the corpus is represented as probability distribution over words and these found topic clusters can assign a submission/post to topic segments. The sentiment function and analysis of posts will remain the same but with a more sophisticated topic allocation structure.
 
-### Figure 8. Clustering of top terms of topics
+### Figure 6. Topic terms distritrbution network
+![Description](imgs/topic_distribution.png)
 
-_[Image placeholder for clustering graph]_
-
-### Figure 9. Topic terms correlation network
-
-_[Image placeholder for correlation network graph]_
 
 I used this new topic analysis and the same sentiment analysis that had been conducted and saved with submission_id (Figure 4). I re-ran the data visualisations but, with new allocation of topics for subreddit submissions.
 
-### Figure 10. Sentiment boxplots using LDA topic allocation
+### Figure 7. Sentiment boxplots using LDA topic allocation
 
-_[Image placeholder for sentiment boxplots]_
+![Description](imgs/LDA_topic_sentiments.png)
 
-The single topics of Trump and Tariff are again seen to have an overall negative sentiment, this is comparable to their topic allocation during TF-IDF.
-
-### Figure 11. Terms buy and sell over time compared to potentially contributing factors to their sentiment
-
-_[Image placeholder for terms comparison graph]_
-
-I plotted the topics of Trump, tariff, market and US against the terms of buy and sell to understand the confidence in the market as terms and how they could correlate. The terms Trump and tariff follow a very similar trend, this could be due to the fact they are a popular pairing and are shown together in many of the LDA's clustering. However, the sentiment of buy looks to follow the sentiment of Trump. When opinion and trust for Trump is low so is the people's sentiment to buy into companies and the economy. Trump and the term buy have a correlation of 0.429.
+The single topics of Trump and Tariff are again seen to have an overall negative sentiment, this is comparable to their topic allocation during TF-IDF.I plotted the topics of Trump, tariff, market and US against the terms of buy and sell to understand the confidence in the market as terms and how they could correlate. The terms Trump and tariff follow a very similar trend, this could be due to the fact they are a popular pairing and are shown together in many of the LDA's clustering. However, the sentiment of buy looks to follow the sentiment of Trump. When opinion and trust for Trump is low so is the people's sentiment to buy into companies and the economy. Trump and the term buy have a correlation of 0.429.
 
 ### Figure 12. Plotted z-score normalisation of the S&P and Trump Sentiment
 
-_[Image placeholder for z-score normalisation graph]_
+![Description](imgs/LDA_sp500_vs_Trump.png)
 
 To look closer at market confidence in relation to Trump's sentiment, I have used the Python library Yahoo Finance for historical data on the S&P500 over the duration of the subreddit submissions that have been used. With z-score normalisation to plot them together in a range that can capture the way the values fluctuate. I found a 0.194 correlation between these two variables in the best case.
 
